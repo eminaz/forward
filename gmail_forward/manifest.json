@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "Gmail Forward Extension",
+  "description": "Forward gmail with one click",
+  "version": "1.1",
+
+  "browser_action": {
+    "default_icon": "email_forward.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "pageCapture",
+    "tabs",
+    "http://*/*", 
+    "https://*/*"
+  ],
+
+  "content_security_policy": 
+  "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com; object-src 'self'",
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["firebase.js", "jquery-1.7.2.min.js"]
+    }
+  ],
+
+  "options_page": "options.html"
+
+}
